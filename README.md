@@ -24,22 +24,26 @@ client = FastDeepseek::Client.new(api_key: 'YOUR_API_KEY')
 ```
 
 You can then use the `#chat` and `#coder` methods to send requests to the DeepSeek API:
+
 ```Ruby
-response = client.chat('Hello, world!')
+response = client.chat('hello, how are you?', model: 'deepseek-r1:1.5b')
 puts response
 
-response = client.coder('Write a Python function to calculate the factorial of a number.')
+response = client.chat('write a algorithm for binary search in python', model: 'deepseek-coder')
 puts response
 ```
+
 ## Configuration
 
 You can configure the `FastDeepseek::Client` instance by passing in additional options:
+
 ```Ruby
 client = FastDeepseek::Client.new(
   api_key: 'YOUR_API_KEY',
   base_url: 'https://api.deepseek.com'
 )
 ```
+
 ## Error Handling
 
 The FastDeepseek client raises custom error classes for different types of errors:
@@ -58,10 +62,13 @@ end
 ```
 
 ## Contributing
+
 Bug reports and pull requests are welcome on GitHub at https://github.com/udaykadaboina/fast-deepseek.
 
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Code of Conduct
+
 Everyone interacting in the FastDeepseek project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/udaykadaboina/fast-deepseek/blob/main/CODE_OF_CONDUCT.md).
