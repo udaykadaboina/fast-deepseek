@@ -5,6 +5,7 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in fast-deepseek.gemspec
 gemspec
 
+gem "dotenv", "~> 2.8"
 gem "rake", "~> 13.0"
 
 group :development do

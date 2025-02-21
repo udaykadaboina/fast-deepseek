@@ -2,13 +2,16 @@
 require 'faraday'
 require 'json'
 require 'logger'
+require 'dotenv/load'
 
 module FastDeepseek
   class Client
     DEFAULT_HOST = 'http://localhost:11434/api'.freeze
 
-    def initialize(api_key:, base_url: DEFAULT_HOST)
+    def initialize(api_key: nil, base_url: DEFAULT_HOST)
       @api_key = api_key || ENV['DEEPSEEK_API_KEY']
+      raise "DEEPSEEK_API_KEY is missing! Set it in the .env file or pass it explicitly." unless @api_key
+
       @base_url = base_url
       @logger = Logger.new($stdout)
 
@@ -18,12 +21,8 @@ module FastDeepseek
       end
     end
 
-    def chat(prompt, model: 'deepseek-r1:1.5b', options: {})
+    def chat(prompt, model: , options: {})
       request('chat', { model: model, messages: [{ role: 'user', content: prompt }], stream: false }.merge(options))
-    end
-
-    def coder(prompt, model: 'deepseek-coder')
-      request('chat', { model: model, messages: [{ role: 'user', content: prompt }], stream: false })
     end
 
     private

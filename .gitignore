@@ -13,3 +13,4 @@
 # others
 .env
 .DS_Store
+*.gem

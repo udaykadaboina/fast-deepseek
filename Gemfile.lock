@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fast-deepseek (0.1.0)
+    fast-deepseek (0.1.1)
       faraday (~> 2.0)
 
 GEM
@@ -15,6 +15,7 @@ GEM
       bigdecimal
       rexml
     diff-lcs (1.6.0)
+    dotenv (2.8.1)
     faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -75,9 +76,11 @@ GEM
       hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
+  arm64-darwin-23
   x86_64-darwin-20
 
 DEPENDENCIES
+  dotenv (~> 2.8)
   fast-deepseek!
   rake (~> 13.0)
   rspec (~> 3.0)
