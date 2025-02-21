@@ -23,13 +23,13 @@ require 'fast_deepseek'
 client = FastDeepseek::Client.new(api_key: 'YOUR_API_KEY')
 ```
 
-You can then use the `#chat` and `#coder` methods to send requests to the DeepSeek API:
+You can then use the `#chat` method with desired `:model` to send requests to the DeepSeek API:
 
 ```Ruby
-response = client.chat('hello, how are you?', model: 'deepseek-r1:1.5b')
+response = client.chat('Hello, how are you?', model: 'deepseek-r1:1.5b')
 puts response
 
-response = client.chat('write a algorithm for binary search in python', model: 'deepseek-coder')
+response = client.chat('Write a Python function to calculate the factorial of a number.', model: 'deepseek-coder')
 puts response
 ```
 
@@ -55,7 +55,7 @@ You can rescue these errors in your code to handle them accordingly:
 
 ```Ruby
 begin
-  response = client.chat('Hello, world!')
+  response = client.chat('Hello, how are you?', model: 'deepseek-r1:1.5b')
 rescue DeepSeek::Error => e
   puts "API request failed: #{e.message}"
 end
