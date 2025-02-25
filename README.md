@@ -1,5 +1,7 @@
 # FastDeepseek
 
+[![Gem Version](https://badge.fury.io/rb/fast-deepseek.svg)](https://badge.fury.io/rb/fast-deepseek)
+
 A Ruby client for the DeepSeek API.
 
 ## Installation
