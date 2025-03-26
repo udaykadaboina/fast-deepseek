@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     "homepage_uri" => spec.homepage,
     "source_code_uri" => "https://github.com/udaykadaboina/fast-deepseek",
-    "changelog_uri" => "https://github.com/rails/rails/releases/tag/v#{FastDeepseek::VERSION}",
+    "changelog_uri" => "https://github.com/udaykadaboina/fast-deepseek/releases/tag/v#{FastDeepseek::VERSION}",
     "rubygems_mfa_required" => "true"
   }
 
@@ -28,6 +28,4 @@ Gem::Specification.new do |spec|
   spec.files = Dir["lib/**/*.rb"] + Dir["bin/*"]
 
   spec.add_dependency "faraday", "~> 2.0"
-  spec.add_development_dependency "rspec", "~> 3.10"
-  spec.add_development_dependency "webmock", "~> 3.14"
 end

@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.1.3] - 2025-03-26
+
+- Fixed minor bug in gemspec metadata
+
 ## [0.1.2] - 2025-03-26
 
 - Updated usage examples in README
