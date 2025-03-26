@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'lib/fast_deepseek/version'
+require_relative "lib/fast_deepseek/version"
 
 Gem::Specification.new do |spec|
   spec.name = "fast-deepseek"
@@ -17,16 +17,17 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     "homepage_uri" => spec.homepage,
     "source_code_uri" => "https://github.com/udaykadaboina/fast-deepseek",
-    "changelog_uri" => "https://github.com/udaykadaboina/fast-deepseek/CHANGELOG.md",
+    "changelog_uri" => "https://github.com/rails/rails/releases/tag/v#{FastDeepseek::VERSION}",
+    "rubygems_mfa_required" => "true"
   }
 
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.files = Dir['lib/**/*.rb'] + Dir['bin/*']
+  spec.files = Dir["lib/**/*.rb"] + Dir["bin/*"]
 
-  spec.add_dependency 'faraday', '~> 2.0'
-  spec.add_development_dependency 'rspec', '~> 3.10'
-  spec.add_development_dependency 'webmock', '~> 3.14'
+  spec.add_dependency "faraday", "~> 2.0"
+  spec.add_development_dependency "rspec", "~> 3.10"
+  spec.add_development_dependency "webmock", "~> 3.14"
 end
