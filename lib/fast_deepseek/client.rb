@@ -24,8 +24,18 @@ module FastDeepseek
       end
     end
 
-    def chat(prompt, model:, options: {})
-      request({ model: model, messages: [{ role: 'user', content: prompt }], stream: false }.merge(options))
+    def chat(prompt = nil, model:, messages: nil, options: {})
+      raise ArgumentError, 'Either prompt or messages must be provided.' if prompt.nil? && messages.nil?
+
+      request({
+        model: model,
+        messages: messages || [{ role: 'user', content: prompt }],
+        stream: false
+      }.merge(options))
+    end
+
+    def message_content(response)
+      response.dig('choices', 0, 'message', 'content') || response.dig('message', 'content')
     end
 
     private

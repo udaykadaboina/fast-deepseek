@@ -26,6 +26,22 @@ RSpec.describe FastDeepseek::Client do
 
       expect(response['choices'].first['message']['content']).to eq('Hello, world!')
     end
+
+    it 'accepts an explicit messages array for DeepSeek-compatible payloads' do
+      messages = [{ role: 'user', content: 'Hello from a custom message list' }]
+
+      stub_request(:post, 'https://api.deepseek.com/chat/completions')
+        .with(
+          headers: { 'Authorization' => 'Bearer test_api_key' },
+          body: { model: 'deepseek-chat', messages: messages, stream: false }.to_json
+        )
+        .to_return(status: 200, body: { choices: [{ message: { role: 'assistant',
+                                                               content: 'Hi there!' } }] }.to_json)
+
+      response = client.chat(nil, model: 'deepseek-chat', messages: messages)
+
+      expect(client.message_content(response)).to eq('Hi there!')
+    end
   end
 
   describe '#coder' do
