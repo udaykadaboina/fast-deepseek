@@ -38,7 +38,22 @@ module FastDeepseek
       response.dig('choices', 0, 'message', 'content') || response.dig('message', 'content')
     end
 
+    def models
+      request_get('/models')
+    end
+
     private
+
+    def request_get(path)
+      response = @conn.get(path) do |req|
+        req.headers['Authorization'] = "Bearer #{@api_key}"
+      end
+
+      handle_response(response)
+    rescue Faraday::Error => e
+      @logger.error("API request failed: #{e.message}")
+      raise FastDeepseek::Error, "API request failed: #{e.message}"
+    end
 
     def request(payload)
       response = @conn.post('/chat/completions') do |req|

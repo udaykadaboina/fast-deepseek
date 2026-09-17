@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-17
+
+- Switched the default API base URL to the official DeepSeek endpoint
+- Fixed the chat request flow to use a single DeepSeek chat completion request
+- Added DeepSeek-compatible `messages` payload support while keeping prompt-based usage working
+- Added `models` endpoint to list available models
+- Added consistent custom error classes for rate limits, server failures, and generic API errors
+- Updated README usage examples to match the actual public API
+
 ## [0.1.3] - 2025-03-26
 
 - Fixed minor bug in gemspec metadata

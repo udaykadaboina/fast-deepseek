@@ -60,4 +60,16 @@ RSpec.describe FastDeepseek::Client do
       expect(response['choices'].first['message']['content']).to include('def factorial')
     end
   end
+
+  describe '#models' do
+    it 'lists available DeepSeek models' do
+      stub_request(:get, 'https://api.deepseek.com/models')
+        .with(headers: { 'Authorization' => 'Bearer test_api_key' })
+        .to_return(status: 200, body: { data: [{ id: 'deepseek-chat' }, { id: 'deepseek-coder' }] }.to_json)
+
+      response = client.models
+
+      expect(response['data'].map { |model| model['id'] }).to include('deepseek-chat', 'deepseek-coder')
+    end
+  end
 end
