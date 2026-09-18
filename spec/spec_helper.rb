@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'rspec'
-require 'webmock/rspec'
-require 'fast_deepseek/client'
-require 'fast_deepseek/version'
+require "rspec"
+require "webmock/rspec"
+require "fast_deepseek/client"
+require "fast_deepseek/version"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
