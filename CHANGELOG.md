@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+- Fixed duplicate requests made by `Client#chat`
+- Added namespaced API error classes
+- Declared `dotenv` as a runtime dependency
+
 ## [0.1.3] - 2025-03-26
 
 - Fixed minor bug in gemspec metadata

@@ -27,5 +27,6 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["lib/**/*.rb"] + Dir["bin/*"]
 
+  spec.add_dependency "dotenv", "~> 2.8"
   spec.add_dependency "faraday", "~> 2.0"
 end

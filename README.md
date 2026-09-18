@@ -86,15 +86,15 @@ client = FastDeepseek::Client.new(
 
 The FastDeepseek client raises custom error classes for different types of errors:
 
-`DeepSeek::Error`: a generic error class for API request failures.
-`DeepSeek::RateLimitError`: raised when the API rate limit is exceeded.
-`DeepSeek::ServerError`: raised when a server error occurs.
+`FastDeepseek::Error`: a generic error class for API request failures.
+`FastDeepseek::RateLimitError`: raised when the API rate limit is exceeded.
+`FastDeepseek::ServerError`: raised when a server error occurs.
 You can rescue these errors in your code to handle them accordingly:
 
 ```Ruby
 begin
   response = client.chat('Hello, how are you?', model: 'deepseek-r1:1.5b')
-rescue DeepSeek::Error => e
+rescue FastDeepseek::Error => e
   puts "API request failed: #{e.message}"
 end
 ```
