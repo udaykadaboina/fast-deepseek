@@ -1,4 +1,4 @@
-## [0.2.0] - 2026-09-19
+## [0.2.1] - 2026-09-19
 
 - Document Ruby 3.2+ as the supported runtime range
 - Use the hosted DeepSeek API by default instead of local Ollama

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fast-deepseek (0.2.0)
+    fast-deepseek (0.2.1)
       dotenv (~> 2.8)
       faraday (~> 2.0)
 
