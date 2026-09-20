@@ -1,4 +1,16 @@
-## [Unreleased]
+## [0.2.2] - 2026-09-19
+
+- Fix CI failure by adding `x86_64-linux` and `ruby` platforms to `Gemfile.lock`
+
+## [0.2.1] - 2026-09-19
+
+- Document Ruby 3.2+ as the supported runtime range
+- Use the hosted DeepSeek API by default instead of local Ollama
+- Send requests to the `/chat/completions` endpoint with bearer authentication
+
+- Fixed duplicate requests made by `Client#chat`
+- Added namespaced API error classes
+- Declared `dotenv` as a runtime dependency
 
 ## [0.1.3] - 2025-03-26
 

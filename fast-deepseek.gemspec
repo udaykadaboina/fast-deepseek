@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Provides an easy-to-use interface for interacting with DeepSeek API."
   spec.homepage      = "https://github.com/udaykadaboina/fast-deepseek"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 3.2.0"
 
   spec.metadata = {
     "homepage_uri" => spec.homepage,
@@ -27,5 +27,6 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["lib/**/*.rb"] + Dir["bin/*"]
 
+  spec.add_dependency "dotenv", "~> 2.8"
   spec.add_dependency "faraday", "~> 2.0"
 end
