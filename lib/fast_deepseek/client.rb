@@ -29,7 +29,7 @@ module FastDeepseek
 
     def request(endpoint, payload)
       response = @conn.post("#{endpoint}/completions") do |req|
-        req.headers["Authorization"] = "Bearer #{@api_key}"
+        req.headers["Authorization"] = format("Bearer %s", @api_key)
         req.body = payload.to_json
       end
 
