@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+- Use the hosted DeepSeek API by default instead of local Ollama
+- Send requests to the `/chat/completions` endpoint with bearer authentication
+
 - Fixed duplicate requests made by `Client#chat`
 - Added namespaced API error classes
 - Declared `dotenv` as a runtime dependency

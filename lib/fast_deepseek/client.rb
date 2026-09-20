@@ -8,7 +8,7 @@ require "dotenv/load"
 module FastDeepseek
   # Client for interacting with the DeepSeek API.
   class Client
-    DEFAULT_HOST = "http://localhost:11434/api"
+    DEFAULT_HOST = "https://api.deepseek.com"
 
     def initialize(api_key: nil, base_url: DEFAULT_HOST)
       @api_key = api_key || ENV.fetch("DEEPSEEK_API_KEY", nil)
@@ -28,7 +28,7 @@ module FastDeepseek
     private
 
     def request(endpoint, payload)
-      response = @conn.post(endpoint) do |req|
+      response = @conn.post("#{endpoint}/completions") do |req|
         req.headers["Authorization"] = "Bearer #{@api_key}"
         req.body = payload.to_json
       end
