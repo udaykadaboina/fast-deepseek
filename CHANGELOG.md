@@ -1,5 +1,6 @@
 ## [Unreleased]
 
+- Document Ruby 3.2+ as the supported runtime range
 - Use the hosted DeepSeek API by default instead of local Ollama
 - Send requests to the `/chat/completions` endpoint with bearer authentication
 

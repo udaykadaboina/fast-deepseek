@@ -4,6 +4,8 @@
 
 A Ruby client for the hosted DeepSeek API.
 
+Ruby 3.2 and newer are supported. Ruby 2.x is not supported.
+
 ## Installation
 
 Add `gem 'fast-deepseek'` to your application's Gemfile and run `bundle install`,
