@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fast-deepseek (0.2.1)
+    fast-deepseek (0.2.2)
       dotenv (~> 2.8)
       faraday (~> 2.0)
 
@@ -78,7 +78,9 @@ GEM
 
 PLATFORMS
   arm64-darwin-23
+  ruby
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   fast-deepseek!

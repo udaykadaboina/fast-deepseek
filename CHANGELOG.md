@@ -1,3 +1,7 @@
+## [0.2.2] - 2026-09-19
+
+- Fix CI failure by adding `x86_64-linux` and `ruby` platforms to `Gemfile.lock`
+
 ## [0.2.1] - 2026-09-19
 
 - Document Ruby 3.2+ as the supported runtime range
