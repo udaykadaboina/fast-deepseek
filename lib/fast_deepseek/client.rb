@@ -25,14 +25,14 @@ module FastDeepseek
       request("chat", { model: model, messages: [{ role: "user", content: prompt }], stream: false }.merge(options))
     end
 
+    def models
+      request("models", method: :get)
+    end
+
     private
 
-    def request(endpoint, payload)
-      response = @conn.post("#{endpoint}/completions") do |req|
-        req.headers["Authorization"] = format("Bearer %s", @api_key)
-        req.body = payload.to_json
-      end
-
+    def request(endpoint, payload = nil, method: :post)
+      response = send_request(endpoint, payload, method)
       handle_response(response)
     rescue Faraday::Error => e
       @logger.error("API request failed: #{e.message}")
@@ -40,6 +40,14 @@ module FastDeepseek
     rescue JSON::ParserError => e
       @logger.error("Invalid API response: #{e.message}")
       raise Error, "Invalid API response: #{e.message}"
+    end
+
+    def send_request(endpoint, payload, method)
+      path = method == :post ? "#{endpoint}/completions" : endpoint
+      @conn.public_send(method, path) do |req|
+        req.headers["Authorization"] = format("Bearer %s", @api_key)
+        req.body = payload.to_json if payload
+      end
     end
 
     def handle_response(response)
