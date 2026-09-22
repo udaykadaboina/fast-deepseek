@@ -6,6 +6,19 @@ RSpec.describe FastDeepseek::Client do
   let(:api_key) { "test_api_key" }
   let(:client) { FastDeepseek::Client.new(api_key: api_key) }
   let(:endpoint) { "https://api.deepseek.com/chat/completions" }
+  let(:models_endpoint) { "https://api.deepseek.com/models" }
+
+  describe "#models" do
+    it "lists the models available from the DeepSeek API" do
+      stub_request(:get, models_endpoint)
+        .with(headers: { "Authorization" => "Bearer #{api_key}" })
+        .to_return(status: 200, body: { data: [{ id: "deepseek-chat" }] }.to_json)
+
+      response = client.models
+
+      expect(response["data"].first["id"]).to eq("deepseek-chat")
+    end
+  end
 
   describe "#chat" do
     it "sends a chat request to the DeepSeek API" do
