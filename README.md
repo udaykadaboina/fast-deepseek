@@ -25,6 +25,16 @@ response = client.chat("Hello, how are you?", model: "deepseek-chat")
 puts response["choices"].first["message"]["content"]
 ```
 
+List the models available to your API key:
+
+```ruby
+models = client.models
+
+models.fetch("data").each do |model|
+  puts model.fetch("id")
+end
+```
+
 The client uses `https://api.deepseek.com` by default and sends requests to
 DeepSeek's `/chat/completions` endpoint. A custom compatible endpoint can be
 provided with `base_url`.
