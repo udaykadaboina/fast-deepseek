@@ -2,4 +2,5 @@
 
 require_relative "fast_deepseek/version"
 require_relative "fast_deepseek/errors"
+require_relative "fast_deepseek/request"
 require_relative "fast_deepseek/client"
