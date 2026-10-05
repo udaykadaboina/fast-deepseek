@@ -9,11 +9,12 @@ This roadmap describes the planned evolution of the FastDeepseek Ruby client.
 - API-key authentication through an argument or `DEEPSEEK_API_KEY`
 - Configurable API base URL for compatible endpoints
 - Non-streaming chat completions
+- Block-based streaming chat completions
 - Configurable model and request options
 - Namespaced errors for general failures, rate limits, and server errors
 - Dotenv support for local development
 
-## In Progress
+## Available Now
 
 ### Model Discovery
 
@@ -30,16 +31,7 @@ end
 
 ## Planned Features
 
-### 1. Streaming Chat Responses
-
-Allow callers to process response tokens as they arrive from the API.
-
-- Add a streaming chat API with a block or enumerable interface
-- Parse server-sent event chunks
-- Expose text deltas and the final response metadata
-- Handle interrupted and malformed streams consistently
-
-### 2. Configurable Timeouts and Retries
+### 1. Configurable Timeouts and Retries
 
 Improve behavior on slow or temporarily unavailable networks.
 
@@ -49,7 +41,7 @@ Improve behavior on slow or temporarily unavailable networks.
 - Retry network errors and appropriate `5xx` responses
 - Preserve existing rate-limit behavior unless explicitly configured otherwise
 
-### 3. Conversation History
+### 2. Conversation History
 
 Support multi-turn conversations without requiring callers to construct message payloads manually.
 
@@ -58,7 +50,7 @@ Support multi-turn conversations without requiring callers to construct message 
 - Keep the existing single-prompt `chat` API compatible
 - Validate message structure before making a request
 
-### 4. Response and Request Ergonomics
+### 3. Response and Request Ergonomics
 
 Make common API operations easier to use while keeping raw response access available.
 
@@ -67,7 +59,7 @@ Make common API operations easier to use while keeping raw response access avail
 - Clear validation errors for missing or invalid arguments
 - Optional structured logging hooks
 
-### 5. Expanded API Coverage
+### 4. Expanded API Coverage
 
 Add commonly used DeepSeek endpoints as stable client methods.
 
@@ -76,7 +68,7 @@ Add commonly used DeepSeek endpoints as stable client methods.
 - Embeddings, when supported by the target DeepSeek API
 - Additional compatible OpenAI-style endpoints as demand justifies them
 
-### 6. Production Readiness
+### 5. Production Readiness
 
 Strengthen the gem for use in services and applications.
 
@@ -90,9 +82,7 @@ Strengthen the gem for use in services and applications.
 
 The recommended implementation order is:
 
-1. Model discovery
-2. Streaming chat responses
-3. Configurable timeouts and retries
-4. Conversation history
-5. Response ergonomics
-6. Expanded API coverage and production hardening
+1. Configurable timeouts and retries
+2. Conversation history
+3. Response ergonomics
+4. Expanded API coverage and production hardening

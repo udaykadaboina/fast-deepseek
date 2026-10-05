@@ -25,6 +25,14 @@ response = client.chat("Hello, how are you?", model: "deepseek-chat")
 puts response["choices"].first["message"]["content"]
 ```
 
+Stream response content as it arrives:
+
+```ruby
+client.chat_stream("Tell me a story", model: "deepseek-chat") do |content|
+  print content
+end
+```
+
 List the models available to your API key:
 
 ```ruby

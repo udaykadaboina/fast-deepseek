@@ -60,6 +60,28 @@ RSpec.describe FastDeepseek::Client do
     end
   end
 
+  describe "#chat_stream" do
+    it "yields content from streamed response events" do
+      streamed_response = [
+        'data: {"choices":[{"delta":{"content":"Hello"}}]}',
+        'data: {"choices":[{"delta":{"content":" there"}}]}',
+        "data: [DONE]"
+      ].join("\n\n")
+      stub_request(:post, endpoint)
+        .with(
+          body: { model: "deepseek-chat", messages: [{ role: "user", content: "Hello" }],
+                  stream: true }.to_json,
+          headers: { "Authorization" => "Bearer #{api_key}", "Accept" => "text/event-stream" }
+        )
+        .to_return(status: 200, body: "#{streamed_response}\n\n")
+
+      chunks = []
+      client.chat_stream("Hello", model: "deepseek-chat") { |chunk| chunks << chunk }
+
+      expect(chunks).to eq(["Hello", " there"])
+    end
+  end
+
   describe "code generation" do
     it "sends a code generation request to the DeepSeek API" do
       stub_request(:post, endpoint)

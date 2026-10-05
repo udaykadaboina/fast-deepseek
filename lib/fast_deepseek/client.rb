@@ -20,6 +20,11 @@ module FastDeepseek
       @request.call("chat", payload)
     end
 
+    def chat_stream(prompt, model:, options: {}, &)
+      payload = { model: model, messages: [{ role: "user", content: prompt }], stream: true }.merge(options)
+      @request.stream("chat", payload, &)
+    end
+
     def models
       @request.call("models", method: :get)
     end
